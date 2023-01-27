@@ -16,7 +16,7 @@ app.post('/add', async (req, res) => {
     const todo = req.body
     const todos = await fse.readFileSync(`database.json`)
     const parsedTodos = JSON.parse(todos)
-    parsedTodos.todos.unshift(todo)
+    parsedTodos.unshift(todo)
     await fse.outputFile(`database.json`, JSON.stringify(parsedTodos));
     res.json(parsedTodos)
 })
@@ -26,13 +26,13 @@ app.post('/done', async (req, res) => {
     console.log(id)
     const todos = await fse.readFileSync(`database.json`)
     const parsedTodos = JSON.parse(todos)
-    const updatedTodos = parsedTodos.todos.map(todo => {
+    const updatedTodos = parsedTodos.map(todo => {
         if (todo.id === id) {
             return { ...todo, done: true }
         }
         return todo
     })
-    await fse.outputFile(`database.json`, JSON.stringify({ todos: updatedTodos }));
+    await fse.outputFile(`database.json`, JSON.stringify(updatedTodos));
     res.json(updatedTodos)
 })
 

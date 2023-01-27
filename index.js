@@ -23,7 +23,6 @@ app.post('/add', async (req, res) => {
 
 app.post('/done', async (req, res) => {
     const { id } = req.body
-    console.log(id)
     const todos = await fse.readFileSync(`database.json`)
     const parsedTodos = JSON.parse(todos)
     const updatedTodos = parsedTodos.map(todo => {
@@ -34,6 +33,15 @@ app.post('/done', async (req, res) => {
     })
     await fse.outputFile(`database.json`, JSON.stringify(updatedTodos));
     res.json(updatedTodos)
+})
+app.post('/delete', async (req, res) => {
+    const { id } = req.body
+    const todos = await fse.readFileSync(`database.json`)
+    const parsedTodos = JSON.parse(todos)
+    const idx = parsedTodos.findIndex(item => item.id === id)
+    parsedTodos.splice(idx, 1)
+    await fse.outputFile(`database.json`, JSON.stringify(parsedTodos));
+    res.json(parsedTodos)
 })
 
 

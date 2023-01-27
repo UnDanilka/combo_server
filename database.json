@@ -1,8 +1,18 @@
 {
     "todos": [
         {
+            "value": "f",
+            "done": true,
+            "id": "c50268e0-c8c9-45b6-8474-32710fbaa591"
+        },
+        {
+            "value": "d",
+            "done": true,
+            "id": "4242e182-eaef-4a07-9c4c-71a723167272"
+        },
+        {
             "value": "cecekce",
-            "done": false,
+            "done": true,
             "id": "87653360-ddda-4b51-a715-0bbfdae5ce63"
         }
     ]

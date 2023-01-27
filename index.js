@@ -1,12 +1,25 @@
 import express from 'express'
 import cors from 'cors'
-import fs from 'fs'
-import { v4 as uuidv4 } from 'uuid'
+import fse from 'fs-extra'
 import bodyParser from 'body-parser'
 
 const app = express()
 app.use(cors())
 app.use(bodyParser.json({ type: 'application/json' }))
+
+app.get('/todos', async (req, res) => {
+    const todos = await fse.readFileSync(`database.json`)
+    res.send(todos)
+
+})
+app.post('/add', async (req, res) => {
+    const todo = req.body
+    const todos = await fse.readFileSync(`database.json`)
+    const parsedTodos = JSON.parse(todos)
+    parsedTodos.todos.unshift(todo)
+    await fse.outputFile(`database.json`, JSON.stringify(parsedTodos));
+    res.json(parsedTodos)
+})
 
 
 

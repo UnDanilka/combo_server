@@ -1,19 +1,9 @@
 {
     "todos": [
         {
-            "value": "hi",
-            "id": "1",
-            "done": false
-        },
-        {
-            "value": "hi",
-            "id": "1",
-            "done": false
-        },
-        {
-            "value": "hi",
-            "id": "1",
-            "done": false
+            "value": "cecekce",
+            "done": false,
+            "id": "87653360-ddda-4b51-a715-0bbfdae5ce63"
         }
     ]
 }
